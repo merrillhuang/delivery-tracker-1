@@ -3,9 +3,9 @@ class DeliveriesController < ApplicationController
     # if current_user == nil
       # redirect_to("/users/sign_in") this is how to do it if not using 'before_action :authenticate_user!' in ApplicationController, but would have to do it for every route/page
     # else 
-      matching_deliveries = Delivery.all.order(:supposed_to_arrive_on)
+      matching_deliveries = Delivery.all
 
-      @list_of_deliveries = matching_deliveries.order({ :created_at => :desc })
+      @list_of_deliveries = matching_deliveries
 
       render({ :template => "deliveries/index" })
     # end
