@@ -3,6 +3,7 @@
 # Table name: deliveries
 #
 #  id                    :bigint           not null, primary key
+#  arrived               :boolean          default(FALSE)
 #  description           :text
 #  details               :text
 #  supposed_to_arrive_on :date
