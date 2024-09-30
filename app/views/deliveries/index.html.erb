@@ -52,7 +52,7 @@
   <div class="waiting_on" style="background-color: lightgoldenrodyellow">
     <h2>Waiting on</h2>
     <ul>
-      <% @list_of_deliveries.each do |a_delivery| %>
+      <% @list_of_deliveries.where({ arrived: false }).order(:supposed_to_arrive_on).each do |a_delivery| %>
         <li>
           <div><%= a_delivery.description %></div>
           <div
@@ -75,7 +75,7 @@
   <div class="received" style="background-color: lightgreen">
     <h2>Received</h2>
     <ul>
-      <% @list_of_deliveries.each do |a_delivery| %>
+      <% @list_of_deliveries.where({ arrived: true}).order("updated_at desc").each do |a_delivery| %>
         <li>
           <div><%= a_delivery.description %></div>
           <small>Updated <%= time_ago_in_words(a_delivery.updated_at)%> ago
