@@ -39,9 +39,7 @@ class DeliveriesController < ApplicationController
     the_id = params.fetch("path_id")
     the_delivery = Delivery.where({ :id => the_id }).at(0)
 
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
-    the_delivery.details = params.fetch("query_details")
+    the_delivery.arrived = true
 
     if the_delivery.valid?
       the_delivery.save
